@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -12,17 +12,27 @@ import { Card } from '@mui/material';
 
 function ProductFilterBox({ onFilterChange }) {
   const [selectedCategories, setSelectedCategories] = useState(['Todos']);
-  const [value, setValue] = React.useState(0);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [value, setValue] = useState(0);
+
+  const handleMinPriceChange = (event) => {
+    setMinPrice(event.target.value);
+  };
+
+  const handleMaxPriceChange = (event) => {
+    setMaxPrice(event.target.value);
+  };
 
   useEffect(() => {
     // Llamar a la función de filtro cuando se monta el componente
     onFilterChange({
       category: 'Todos',
-      // minPrice: minPrice,
-      // maxPrice: maxPrice,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
       // minRating: minRating
     });
-  }, []);
+  }, [minPrice, maxPrice]);
 
   const handleToggle = (value) => () => {
     let newSelectedCategories = [];
@@ -52,8 +62,8 @@ function ProductFilterBox({ onFilterChange }) {
     const category = newSelectedCategories.includes('Todos') ? 'Todos' : newSelectedCategories[0];
     onFilterChange({
       category: category,
-      // minPrice: minPrice,
-      // maxPrice: maxPrice,
+      minPrice: minPrice,
+      maxPrice: maxPrice,
       // minRating: minRating
     });
   };
@@ -85,8 +95,8 @@ function ProductFilterBox({ onFilterChange }) {
       </List>
       <div className='d-flex justify-content-between mt-3'>
         <form>
-          <TextField label="$500" className='ms-3 mx-2' />
-          <TextField label="$100000" className='ms-3 mt-3' />
+          <TextField label="Precio mínimo" className='ms-3 mx-2' value={minPrice} onChange={handleMinPriceChange} />
+          <TextField label="Precio máximo" className='ms-3 mt-3' value={maxPrice} onChange={handleMaxPriceChange} />
         </form>
       </div>
       <div className='ms-3 mt-4 mb-4'>

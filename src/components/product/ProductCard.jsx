@@ -33,12 +33,16 @@ function ProductCard({ filters }) {
       return false;
     }
     // Filtrar por rango de precios
-    if (filters.minPrice && filters.maxPrice) {
-      const price = parseFloat(product.price.replace('.', '').replace(',', ''));
-      if (price < filters.minPrice || price > filters.maxPrice) {
-        return false;
-      }
-    }
+if (product.price && filters.minPrice !== '' && filters.maxPrice !== '') {
+  const price = parseInt(product.price);
+  const minPrice = parseInt(filters.minPrice);
+  const maxPrice = parseInt(filters.maxPrice);
+  if (price < minPrice || price > maxPrice) {
+    return false;
+  }
+}
+
+
     // Filtrar por reviews
     if (filters.minRating && product.review < filters.minRating) {
       return false;
