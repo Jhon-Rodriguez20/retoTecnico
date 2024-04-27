@@ -12,7 +12,7 @@ import { ProductDetail } from './ProductDetail';
 import { ModalExtended } from '../modal/ModalExtended';
 import productsData from '../../data/productsData';
 
-function ProductCard() {
+function ProductCard({ filters }) {
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -26,10 +26,30 @@ function ProductCard() {
     setSelectedProduct(null);
   };
 
+  // Filtrar productos basados en los filtros seleccionados
+  const filteredProducts = productsData.filter(product => {
+    // Filtrar por categoría
+    if (filters.category !== 'Todos' && product.category !== filters.category) {
+      return false;
+    }
+    // Filtrar por rango de precios
+    if (filters.minPrice && filters.maxPrice) {
+      const price = parseFloat(product.price.replace('.', '').replace(',', ''));
+      if (price < filters.minPrice || price > filters.maxPrice) {
+        return false;
+      }
+    }
+    // Filtrar por reviews
+    if (filters.minRating && product.review < filters.minRating) {
+      return false;
+    }
+    return true;
+  });
+
   return (
     <>
       <Grid container spacing={2}>
-        {productsData.map((product) => (
+        {filteredProducts.map((product) => (
           <Grid item key={product.id} xs={12} sm={6} md={6}>
             <Card sx={{ maxWidth: 340 }} className='my-card mt-3 mb-5'>
               <CardMedia
@@ -69,4 +89,4 @@ function ProductCard() {
   );
 }
 
-export { ProductCard }
+export { ProductCard };

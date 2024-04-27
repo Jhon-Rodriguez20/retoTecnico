@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -10,21 +10,52 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { Card } from '@mui/material';
 
-function ProductFilterBox() {
-  const [checked, setChecked] = React.useState([0]);
+function ProductFilterBox({ onFilterChange }) {
+  const [selectedCategories, setSelectedCategories] = useState(['Todos']);
   const [value, setValue] = React.useState(0);
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+  useEffect(() => {
+    // Llamar a la función de filtro cuando se monta el componente
+    onFilterChange({
+      category: 'Todos',
+      // minPrice: minPrice,
+      // maxPrice: maxPrice,
+      // minRating: minRating
+    });
+  }, []);
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
+  const handleToggle = (value) => () => {
+    let newSelectedCategories = [];
+
+    if (selectedCategories.includes(value)) {
+      newSelectedCategories = selectedCategories.filter((category) => category !== value);
     } else {
-      newChecked.splice(currentIndex, 1);
+      if (value === 'Todos') {
+        newSelectedCategories = ['Todos'];
+      } else {
+        if (selectedCategories.includes('Todos')) {
+          newSelectedCategories = [value];
+        } else {
+          newSelectedCategories = [...selectedCategories, value];
+        }
+      }
     }
 
-    setChecked(newChecked);
+    // Si se seleccionan ambas categorías, cambiar a 'Todos'
+    if (newSelectedCategories.length > 1) {
+      newSelectedCategories = ['Todos'];
+    }
+
+    setSelectedCategories(newSelectedCategories);
+
+    // Llamar a la función de filtro con las nuevas selecciones
+    const category = newSelectedCategories.includes('Todos') ? 'Todos' : newSelectedCategories[0];
+    onFilterChange({
+      category: category,
+      // minPrice: minPrice,
+      // maxPrice: maxPrice,
+      // minRating: minRating
+    });
   };
 
   return (
@@ -40,7 +71,7 @@ function ProductFilterBox() {
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
-                    checked={checked.indexOf(value) !== -1}
+                    checked={selectedCategories.includes(value)}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ 'aria-labelledby': labelId }}
@@ -52,23 +83,23 @@ function ProductFilterBox() {
           );
         })}
       </List>
-        <div className='d-flex justify-content-between mt-3'>
-            <form>
-                <TextField label="$500" className='ms-3 mx-2'/>
-                <TextField label="$100000" className='ms-3 mt-3'/>
-            </form>
-        </div>
+      <div className='d-flex justify-content-between mt-3'>
+        <form>
+          <TextField label="$500" className='ms-3 mx-2' />
+          <TextField label="$100000" className='ms-3 mt-3' />
+        </form>
+      </div>
       <div className='ms-3 mt-4 mb-4'>
         <h6>Reviews</h6>
         <Stack spacing={1}>
-            <Rating
+          <Rating
             name="simple-controlled"
             value={value}
             onChange={(event, newValue) => {
-            setValue(newValue);
+              setValue(newValue);
             }}
-        />        
-      </Stack>
+          />
+        </Stack>
       </div>
     </Card>
   );
