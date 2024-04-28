@@ -1,3 +1,4 @@
+/* Estilos de la página de los productos*/
 .my-card {
   box-shadow: 0 0 10px rgb(187, 187, 187);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -21,7 +22,7 @@
     scale: 100%;
   }
 }
-  
+
 .my-card {
 
   view-timeline-name: --mycard;
@@ -34,15 +35,28 @@
   animation-fill-mode: both;
 }
 
+.button-wantIt {
+  background-color: rgb(255, 221, 0) !important;
+}
+
+.button-wantIt:hover {
+  background-color: rgb(42, 69, 224) !important;
+  color: rgb(255, 221, 0) !important;
+}
+/* Fin de estilos de la página de los productos */
+
+/* Estilos del componente de la caja de filtros*/
+.box-container {
+  box-shadow: 0 1px 8px rgb(187, 187, 187) !important;
+}
+/* Fin de estilos del componente de la caja de filtros */
+
+/* Estilos del Footer */
 .facebook-icon {
   background-color: blue;
   color: #fff;
-  width: 100%; /* Establece el ancho al 100% */
-  height: 100%; /* Establece la altura al 100% */
-}
-
-.boton-facebook:hover {
-  background-color: blue;
+  width: 100%;
+  height: 100%;
 }
 
 .linkedin-icon {
@@ -56,3 +70,4 @@
 .instagram-icon {
   color: rgba(225, 48, 108, 1);
 }
+/* Fin de estilos del Footer */

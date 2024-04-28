@@ -8,13 +8,10 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import LockIcon from '@mui/icons-material/Lock';
-import MailIcon from '@mui/icons-material/Mail';
-import DescriptionIcon from '@mui/icons-material/Description';
-import StoreIcon from '@mui/icons-material/Store';
 import MenuIcon from '@mui/icons-material/Menu';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 function Navigation() {
   const [open, setOpen] = React.useState(false);
@@ -28,25 +25,21 @@ function Navigation() {
       <List>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemIcon>
-              <StoreIcon />
-            </ListItemIcon>
+            <ListItemText primary="Vendify"/>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
             <ListItemText primary="Productos" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
             <ListItemText primary="Contacto" />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemIcon>
-              <DescriptionIcon />
-            </ListItemIcon>
             <ListItemText primary="Políticas de privacidad" />
           </ListItemButton>
         </ListItem>
@@ -55,10 +48,7 @@ function Navigation() {
       <List>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemIcon>
-              <LockIcon />
-            </ListItemIcon>
-            <ListItemText primary="Iniciar sesión" />
+            <ListItemText primary="Usuario Logueado" />
           </ListItemButton>
         </ListItem>
       </List>
@@ -77,6 +67,16 @@ function Navigation() {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} className='ms-4 fw-bold'>
+            Vendify
+          </Typography>
+          {/* <Button color='inherit'>Home</Button>
+          <Button color='inherit'>Celulares</Button>
+          <Button color='inherit'>Televisores</Button>
+          <Button color='inherit'>Tus préstamos</Button>
+          <Button color='inherit'>Tiendas</Button>
+          <Box sx={{ flexGrow: 1 }} /> */}
+          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
       <Drawer open={open} onClose={toggleDrawer(false)}>
@@ -86,4 +86,4 @@ function Navigation() {
   );
 }
 
-export {Navigation};
+export { Navigation };
