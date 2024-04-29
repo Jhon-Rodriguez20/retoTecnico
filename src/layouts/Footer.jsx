@@ -1,5 +1,5 @@
 import { Facebook, YouTube, Instagram, LinkedIn } from '@mui/icons-material';
-import { Container, Grid,  Typography, Link } from '@mui/material';
+import { Container, Grid, Typography, Link, Box } from '@mui/material';
 
 const Footer = () => {
 
@@ -9,10 +9,17 @@ const Footer = () => {
         padding: '10%',
         borderRadius: '50%',
         fontSize: '200%'
-    };
+    }
+
+    const socialIcons = [
+        { icon: <Facebook style={EstiloIcono} />, link: '/' },
+        { icon: <YouTube style={EstiloIcono} />, link: '/' },
+        { icon: <Instagram style={EstiloIcono} />, link: '/' },
+        { icon: <LinkedIn style={EstiloIcono} />, link: '/' }
+    ]
 
     return (
-        <div className='footer'>
+        <div className='footer mt-5'>
             <Container>
                 <Grid container justifyContent="center">
                     <Grid item md={6} lg={5} xs={12} className='mt-5 mx-5'>
@@ -26,30 +33,23 @@ const Footer = () => {
                         </Typography>
                         <hr/>                        
                         <Typography className='d-flex justify-content-evenly'>
-                            <Link href="/" rel="noopener" className="icono btn btn-floating btn-lg mb-4">
-                                <Facebook style={EstiloIcono} />
-                            </Link>
-                            <Link href="/" rel="noopener" className="icono btn btn-floating btn-lg mb-4">
-                                <YouTube style={EstiloIcono} />
-                            </Link>
-                            <Link href="/" rel="noopener" className="icono btn btn-floating btn-lg mb-4">
-                                <Instagram style={EstiloIcono} />
-                            </Link>
-                            <Link href="/" rel="noopener" className="icono btn btn-floating btn-lg mb-4">
-                                <LinkedIn style={EstiloIcono} />
-                            </Link>
+                            {socialIcons.map((socialIcon, index) => (
+                                <Link key={index} href={socialIcon.link} rel="noopener" className="icono btn btn-floating btn-lg mb-4">
+                                    {socialIcon.icon}
+                                </Link>
+                            ))}
                         </Typography>
                     </Grid>
                 </Grid>
                 <hr/>
-                <div className="text-center">
+                <Box className="text-center">
                     <Typography variant="body1" color="white">
                         Desarrollado por: <span className='fw-semibold'>Jhon Alexander Rodríguez Zapata</span>
                     </Typography>
                     <Typography variant="body1" color="white">
                         © 2024: Todos los derechos
                     </Typography>
-                </div>
+                </Box>
             </Container>
         </div>
     );
