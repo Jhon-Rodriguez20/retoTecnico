@@ -1,7 +1,19 @@
 import { Box, Typography, Rating, Stack, CardMedia, Grid, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function ProductDetail({ product }) {
+
+    ProductDetail.propTypes = {
+        product: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            price: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            review: PropTypes.number.isRequired,
+            image: PropTypes.string.isRequired,
+            id: PropTypes.string.isRequired
+        }).isRequired
+    };
 
     return (
         <Box sx={{ bgcolor: 'background.paper', border: '1px solid #000', boxShadow: 24, p: 4, maxHeight: '500px', overflowY: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

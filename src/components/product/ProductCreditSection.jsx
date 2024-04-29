@@ -14,6 +14,17 @@ function ProductDetailRow({ label, value }) {
 }
 
 function ProductCreditSection({ product }) {
+
+    ProductCreditSection.propTypes = {
+        product: PropTypes.shape({
+            name: PropTypes.string,
+            price: PropTypes.string,
+            description: PropTypes.string,
+            category: PropTypes.string,
+            review: PropTypes.number,
+            image: PropTypes.string
+        })
+    }
     
     const isCellPhone = product.category === 'Celulares';
     const origin = isCellPhone && "China" || "Korea del Norte";
@@ -61,16 +72,5 @@ function ProductCreditSection({ product }) {
         </Accordion>
     );
 }
-
-ProductCreditSection.propTypes = {
-    product: PropTypes.shape({
-        name: PropTypes.string,
-        price: PropTypes.string,
-        description: PropTypes.string,
-        category: PropTypes.string,
-        review: PropTypes.number,
-        image: PropTypes.string
-    })
-};
 
 export { ProductCreditSection }

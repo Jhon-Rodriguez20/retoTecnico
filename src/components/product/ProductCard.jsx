@@ -3,12 +3,22 @@ import { Card, CardContent, CardMedia, CardActions, Typography, Rating, Stack,
         Grid, Button, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
+import PropTypes from 'prop-types';
 import { ProductDetail } from './ProductDetail';
 import { ModalExtended } from '../modal/ModalExtended';
 import productsData from '../../data/productsData';
 import { Link } from 'react-router-dom';
 
 function ProductCard({ filters }) {
+
+    ProductCard.propTypes = {
+        filters: PropTypes.shape({
+            category: PropTypes.string.isRequired,
+            minPrice: PropTypes.string.isRequired,
+            maxPrice: PropTypes.string.isRequired,
+            minRating: PropTypes.number.isRequired
+        }).isRequired
+    }
 
     const [open, setOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);

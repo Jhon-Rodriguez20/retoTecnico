@@ -54,6 +54,10 @@ function RatingSection({ minRating, handleRatingChange }) {
 
 function ProductFilterBox({ onFilterChange }) {
 
+    ProductFilterBox.propTypes = {
+        onFilterChange: PropTypes.func.isRequired
+    }
+
     const [selectedCategories, setSelectedCategories] = useState(['Todos']);
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');

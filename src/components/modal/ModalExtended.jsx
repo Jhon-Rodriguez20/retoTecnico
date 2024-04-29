@@ -1,6 +1,14 @@
 import { Modal, Box } from '@mui/material';
+import PropTypes from 'prop-types';
 
 function ModalExtended({ open, onClose, children }) {
+
+    ModalExtended.propTypes = {
+        open: PropTypes.bool.isRequired,
+        onClose: PropTypes.func.isRequired,
+        children: PropTypes.node.isRequired,
+    }
+
     return (
         <Modal
             open={open}

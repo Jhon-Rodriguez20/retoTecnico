@@ -1,12 +1,12 @@
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Estilos por defecto del carrusel
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import image1 from '../../assets/img/Carrouselimg1.jpg';
 import image2 from '../../assets/img/Carrouselimg2.jpg';
 import { Container } from '@mui/material';
 
 function ProductCarousel() {
   return (
-    <Container maxWidth='lg'>
+    <Container maxWidth='md'>
       <Carousel
         className='mt-5 mb-5'
         autoPlay={true}
