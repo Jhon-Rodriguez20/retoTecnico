@@ -1,3 +1,4 @@
+// ProductCreditSection.jsx
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -22,10 +23,10 @@ function ProductCreditSection({ product }) {
         </AccordionSummary>
         <AccordionDetails>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid item xs={12} md={4}>
               <img src={product.image} alt={product.name} className='img-fluid' />
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={12} md={8}>
               <TableContainer component={Paper} sx={{ boxShadow: 'none', border: 'none' }}>
                 <Table aria-label="product information">
                   <TableBody>
@@ -68,4 +69,4 @@ function ProductCreditSection({ product }) {
   );
 }
 
-export { ProductCreditSection };
+export { ProductCreditSection }

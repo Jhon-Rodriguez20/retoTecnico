@@ -21,7 +21,7 @@ function Navigation() {
   };
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 'auto' }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         <ListItem disablePadding>
           <ListItemButton>
@@ -70,12 +70,6 @@ function Navigation() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} className='ms-4 fw-bold'>
             Vendify
           </Typography>
-          {/* <Button color='inherit'>Home</Button>
-          <Button color='inherit'>Celulares</Button>
-          <Button color='inherit'>Televisores</Button>
-          <Button color='inherit'>Tus préstamos</Button>
-          <Button color='inherit'>Tiendas</Button>
-          <Box sx={{ flexGrow: 1 }} /> */}
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
@@ -86,4 +80,4 @@ function Navigation() {
   );
 }
 
-export { Navigation };
+export { Navigation }

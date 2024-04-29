@@ -18,16 +18,15 @@ function ProductsPage() {
   };
 
   return (
-    <Container>
+    <Container maxWidth='lg'>
       <h3 className="text-center fs-3 fw-semibold text-uppercase py-5 mt-5">Productos</h3>
-      <Box className='d-md-flex justify-content-md-between flex-column flex-md-row' style={{ overflowX: 'auto', maxWidth: '100%' }}>
-        <ProductFilterBox onFilterChange={handleFilterChange} className='mb-3 mb-md-0' />
-        <Box className='mt-3 mx-2 box-container' style={{ overflowY: 'auto', maxHeight: '460px', scrollbarWidth: 'thin' }}>
+      <Box className='d-md-flex justify-content-between flex-column flex-md-row'>
+        <ProductFilterBox onFilterChange={handleFilterChange} className='box-filter-products mb-3 mb-md-0' />
+        <Box className='m-1 box-container' style={{ maxHeight: '500px' }}>
           <ProductCard filters={filters} />
         </Box>
       </Box>
       <ProductCarousel/>
-      {/* <ProductMostSelled/> */}
     </Container>
   );
 }

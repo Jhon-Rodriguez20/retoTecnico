@@ -5,7 +5,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
-import Rating from '@mui/material/Rating'; // Importa Rating desde @mui/material
+import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { Card } from '@mui/material';
@@ -14,7 +14,7 @@ function ProductFilterBox({ onFilterChange }) {
   const [selectedCategories, setSelectedCategories] = useState(['Todos']);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
-  const [minRating, setMinRating] = useState(0); // Agrega el estado para el rating mínimo
+  const [minRating, setMinRating] = useState(0); 
 
   const handleMinPriceChange = (event) => {
     setMinPrice(event.target.value);
@@ -25,14 +25,13 @@ function ProductFilterBox({ onFilterChange }) {
   };
 
   useEffect(() => {
-    // Llamar a la función de filtro cuando se monta el componente
     onFilterChange({
       category: 'Todos',
       minPrice: minPrice,
       maxPrice: maxPrice,
-      minRating: minRating // Agrega el valor del rating mínimo a los filtros
+      minRating: minRating
     });
-  }, [minPrice, maxPrice, minRating]); // Agrega minRating a la lista de dependencias
+  }, [minPrice, maxPrice, minRating]);
 
   const handleToggle = (value) => () => {
     let newSelectedCategories = [];
@@ -51,27 +50,25 @@ function ProductFilterBox({ onFilterChange }) {
       }
     }
 
-    // Si se seleccionan ambas categorías, cambiar a 'Todos'
     if (newSelectedCategories.length > 1) {
       newSelectedCategories = ['Todos'];
     }
 
     setSelectedCategories(newSelectedCategories);
 
-    // Llamar a la función de filtro con las nuevas selecciones
     const category = newSelectedCategories.includes('Todos') ? 'Todos' : newSelectedCategories[0];
     onFilterChange({
       category: category,
       minPrice: minPrice,
       maxPrice: maxPrice,
-      minRating: minRating // Agrega el valor del rating mínimo a los filtros
+      minRating: minRating
     });
   };
 
   return (
-    <Card className='box-container mt-3 mb-3 mx-5' sx={{minWidth: 250, maxWidth: 250}}>
+    <Card className='mt-1 mb-3 mx-3 box-filter-products' sx={{minWidth: 250, maxWidth: 250}}>
       <h6 className='ms-3 mt-4'>Categorías y Precios</h6>
-      <List sx={{ width: '99%', bgcolor: 'background.paper' }}>
+      <List sx={{ bgcolor: 'background.paper' }}>
         {['Todos', 'Celulares', 'Televisores'].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
 
@@ -104,9 +101,10 @@ function ProductFilterBox({ onFilterChange }) {
         <Stack spacing={1}>
           <Rating
             name="simple-controlled"
-            value={minRating} // Actualiza el valor del rating con minRating
+            value={minRating}
+            size='large'
             onChange={(event, newValue) => {
-              setMinRating(newValue); // Actualiza el estado de minRating
+              setMinRating(newValue);
             }}
           />
         </Stack>

@@ -1,3 +1,7 @@
+hr {
+  color: #fff !important;
+}
+
 /* Estilos de la página de los productos*/
 .my-card {
   box-shadow: 0 0 10px rgb(187, 187, 187);
@@ -35,6 +39,12 @@
   animation-fill-mode: both;
 }
 
+.favorite-icon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .button-wantIt {
   background-color: rgb(255, 221, 0) !important;
 }
@@ -47,11 +57,20 @@
 
 /* Estilos del componente de la caja de filtros*/
 .box-container {
-  box-shadow: 0 1px 8px rgb(187, 187, 187) !important;
+  overflow-y: auto;
+}
+
+.box-filter-products {
+  box-shadow: 0 0 6px rgb(180, 180, 180) !important;
 }
 /* Fin de estilos del componente de la caja de filtros */
 
 /* Estilos del Footer */
+
+.footer {
+  background-color: rgb(42, 69, 224);
+}
+
 .facebook-icon {
   background-color: blue;
   color: #fff;

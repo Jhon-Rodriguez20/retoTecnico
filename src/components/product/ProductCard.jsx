@@ -65,52 +65,46 @@ function ProductCard({ filters }) {
   });
 
   return (
-    <>
-      <Grid container spacing={2}>
-        {filteredProducts.map((product) => (
-          <Grid item key={product.id} xs={12} sm={6} md={6}>
-            <Card sx={{ maxWidth: 300 }} className='my-card mt-3 mb-5'>
-              <CardMedia
-                component="img"
-                alt={product.name}
-                height="auto"
-                image={product.image}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div">
-                  <Button onClick={() => handleOpen(product)} className='text-decoration-none fs-6 fw-bold'>
-                    {product.name}
-                  </Button>
-                </Typography>
-                <CardActions className='d-flex justify-content-between'>
-                  <Typography className='fw-bold' variant='p' component="div">
-                    ${product.price} COP
-                  </Typography>
-                  <IconButton aria-label="add to favorites" onClick={() => toggleFavorite(product.id)}>
-                    <FavoriteIcon color={favorites.includes(product.id) ? "error" : "inherit"} />
-                  </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon />
-                  </IconButton>
-                </CardActions>                
-                <Typography className='d-flex justify-content-around'>
-                  <Stack spacing={1}>
-                    <Rating name="read-only" readOnly size='medium' value={product.review} />
-                  </Stack>
-                  <Button className="button-wantIt">Lo Quiero</Button>
-                </Typography>
-              </CardContent>                
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+    <Grid container spacing={2}>
+      {filteredProducts.map((product) => (
+        <Grid key={product.id} item xs={12} sm={6} md={4}>
+          <Card className='my-card m-3'>
+            <CardMedia
+              className='mt-0'
+              component='img'
+              alt={product.name}
+              image={product.image}
+            />
+            <CardContent>
+              <Button onClick={() => handleOpen(product)} className='fs-6 fw-bold'>
+                {product.name}
+              </Button>
+              <Typography variant='body1' className='fw-bold'>
+                ${product.price} COP
+                <IconButton aria-label='share'>
+                  <ShareIcon/>
+                </IconButton>
+              </Typography>
+              <CardActions className='favorite-icon-container'>
+                <IconButton aria-label="add to favorites" onClick={() => toggleFavorite(product.id)}>
+                  <FavoriteIcon color={favorites.includes(product.id) ? "error" : "inherit"} />
+                </IconButton>
+              </CardActions>
+              <Stack spacing={1} className='d-flex justify-content-center'>
+                <Rating name="read-only" readOnly size='medium' value={product.review} />
+                <Button className="button-wantIt">Lo Quiero</Button>
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
       {selectedProduct && (
         <ModalExtended open={open} onClose={handleClose}>
           <ProductDetail product={selectedProduct} />
         </ModalExtended>
       )}
-    </>
-  );
+    </Grid>
+  )
 }
 
 export { ProductCard }

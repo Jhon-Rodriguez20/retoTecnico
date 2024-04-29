@@ -15,4 +15,4 @@ function ProductDetailPage() {
   );
 }
 
-export { ProductDetailPage }
+export { ProductDetailPage };

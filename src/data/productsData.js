@@ -19,7 +19,7 @@ const productsData = [
     },
     {
         id: 2,
-        name: "Samsung The Frame (2021)",
+        name: "Samsung The Frame",
         price: "3499990",
         review: 4,
         category: "Televisores",
@@ -28,7 +28,7 @@ const productsData = [
     },
     {
         id: 3,
-        name: "Samsung Galaxy S21 Ultra",
+        name: "Samsung S21 Ultra",
         price: "2599990",
         review: 4,
         category: "Celulares",
@@ -37,7 +37,7 @@ const productsData = [
     },
     {
         id: 4,
-        name: "Sony A90J OLED 4K TV",
+        name: "Sony A90J OLED 4K",
         price: "6599990",
         review: 3,
         category: "Televisores",
@@ -55,7 +55,7 @@ const productsData = [
     },
     {
         id: 6,
-        name: "Hisense Series ULED 4K TV",
+        name: "Hisense Series 4K",
         price: "4560990",
         review: 2,
         category: "Televisores",
@@ -73,7 +73,7 @@ const productsData = [
     },
     {
         id: 8,
-        name: "LG G1 OLED Evo 4K TV",
+        name: "LG G1 OLED Evo 4K",
         price: "10100000",
         review: 2,
         category: "Televisores",
