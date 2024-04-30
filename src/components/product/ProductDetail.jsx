@@ -1,66 +1,38 @@
-import { Box, Typography, Rating, Stack, CardMedia, Grid, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Typography, Grid } from '@mui/material';
 import PropTypes from 'prop-types';
+import typographyConfig from '../../modules/product/productDetail/typographyProduct';
+import ButtonWantIt from '../../modules/product/productDetail/button';
+import RatingReviews from '../../modules/product/productDetail/ratingReviews';
+import ImageProduct from '../../modules/product/productDetail/imageProduct';
 
 function ProductDetail({ product }) {
-
-    ProductDetail.propTypes = {
-        product: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            review: PropTypes.number.isRequired,
-            image: PropTypes.string.isRequired,
-            id: PropTypes.string.isRequired
-        }).isRequired
-    };
+    ProductDetail.propTypes = { product: PropTypes.shape(productPropTypes).isRequired }
 
     return (
-        <Box sx={{ bgcolor: 'background.paper', border: '1px solid #000', boxShadow: 24, p: 4, maxHeight: '500px', overflowY: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Box className='product-detail-box p-3'>
             <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
-                    <CardMedia
-                        component="img"
-                        alt={product.name}
-                        height="auto"
-                        image={product.image}
-                        sx={{ objectFit: 'contain' }}
-                    />
-                </Grid>
+                <ImageProduct product={product}/>
                 <Grid item xs={12} md={8} container direction="column">
-                    <Typography className='text-center mb-4 fw-semibold' variant="h5">
-                        {product.name}
-                    </Typography>
-                    <Grid container alignItems="center" justifyContent="space-between" spacing={2}>
-                        <Grid item xs={12} md={6}>
-                            <Typography variant='h6' className='fw-semibold'>
-                                ${product.price} COP
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} md={6}>
-                            <Stack spacing={1}>
-                                <Rating name="read-only" readOnly size='large' value={product.review} />                        
-                            </Stack>
-                        </Grid>
-                    </Grid>
-                    <Typography id="modal-modal-description" sx={{ mt: 2, textAlign: 'justify' }} variant="body1">
-                        {product.description}
-                    </Typography>
-                    <Typography className='text-center mt-4'>
-                        Te vas a llevar este producto por solo
-                    </Typography>
-                    <Typography className='text-center fw-semibold'>
-                        $80.000 p/semana
-                    </Typography>
-                    <Typography className='d-flex justify-content-center mt-3'>
-                        <Button component={Link} to={`/product/${product.id}`} className='button-wantIt fs-6 fw-bold'>
-                            Comprar a crédito
-                        </Button>
-                    </Typography>
+                    {typographyConfig.map((config) => (
+                        <Typography {...config} key={config.key}>
+                            {config.content ? config.content : product[config.key]}
+                        </Typography>
+                    ))}
+                    <RatingReviews product={product}/>
+                    <ButtonWantIt product={product} />
                 </Grid>
             </Grid>
         </Box>
     );
+}
+
+const productPropTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    review: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
 }
 
 export { ProductDetail }
