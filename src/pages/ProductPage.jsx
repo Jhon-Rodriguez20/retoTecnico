@@ -25,10 +25,10 @@ function ProductsPage() {
                     <ProductCard filters={filters} />
                 </Box>
             </Box>
-            <section className='text-center'>
+            <Box className='text-center'>
                 <Typography variant='h6' className='fw-semibold mt-1'>Ofertas y Promociones</Typography>
                 <ImagesCarousel images={images} imageStyle={{marginTop: 20}}/>
-            </section>
+            </Box>
         </Container>
     );
 }

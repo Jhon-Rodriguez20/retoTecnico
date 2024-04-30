@@ -6,7 +6,7 @@ const priceInputs = ({ minPrice, maxPrice, handleMinPriceChange, handleMaxPriceC
         { label: "Precio máximo", value: maxPrice, onChange: handleMaxPriceChange }
     ];
 
-    return <Forms fields={fields} />;
+    return <Forms fields={fields} />
 }
 
 export default priceInputs;

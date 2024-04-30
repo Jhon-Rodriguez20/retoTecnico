@@ -50,7 +50,7 @@ function ProductFilterBox({ onFilterChange }) {
     return (
         <Card className='mt-1 mb-3 mx-3 box-filter-products' sx={{minWidth: 250, maxWidth: 250}}>            
             <List sx={{ bgcolor: 'background.paper' }}>
-                <Typography variant='h6' className='ms-2'>Categorías y Precios</Typography>                
+                <Typography variant='h6' className='ms-3 mb-2'>Marcas y Precios</Typography>
                 {['Todos', 'Celulares', 'Televisores'].map((value) => (
                     <CategoryListItem
                         key={value}

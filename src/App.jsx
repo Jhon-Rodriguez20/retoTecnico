@@ -13,11 +13,11 @@ function App() {
             <Navigation/>
             <Routes>        
                 <Route path='/' element={<ProductsPage/>}/>
-                <Route path='/product/:id' element={<ProductDetailPage />} />
+                <Route path='/product/:id' element={<ProductDetailPage />}/>
             </Routes>
             <Footer/>
         </BrowserRouter>
     );
 }
 
-export default App
+export default App;

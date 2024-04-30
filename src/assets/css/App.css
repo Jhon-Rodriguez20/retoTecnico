@@ -116,14 +116,21 @@ hr {
 }
 
 .icons-footer {
-  background-color: rgb(2, 73, 189);
-  color: rgb(228, 189, 0);
-  padding: 10%;
+  color: #2a2a2a !important;
+  padding: 2%;
   border-radius: 50%;
-  font-size: 200% !important;
 }
 
 .span-logo{
   color: rgb(228, 189, 0) !important;
+}
+
+.privacy-links {
+  color: #000000c6 !important;
+}
+
+.privacy-links:hover {
+  color: rgb(2, 73, 189) !important;
+  cursor: pointer;
 }
 /* Fin de estilos del Footer */
